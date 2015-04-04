@@ -10,7 +10,7 @@ class TestModels(testindex.ESTestCase):
     def tearDown(self):
         super(TestModels, self).tearDown()
 
-    def test_01_model(self):
+    def test_01_model_values(self):
         fields_and_values = {
             "id" : "123456",
             "journal_name" : "Journal of THings",
@@ -47,3 +47,4 @@ class TestModels(testindex.ESTestCase):
         }
         score = models.Score()
         dataobj.test_dataobj(score, fields_and_values)
+    
