@@ -54,3 +54,66 @@ Then, start your app with
 If you want to specify your own root config file, you can use
 
     APP_CONFIG=path/to/rootcfg.py python service/web.py
+
+
+## Data Model
+
+```json
+{
+    "id" : "<opaque id for score>",
+    "created_date" : "<date record created>",
+    "last_updated" : "<date record last updated>",
+    
+    "journal" : {
+        "name" : "<name of journal>",
+        "url" : "<url to journal home page>",
+        "issn" : [<issn>],
+        "eissn" : [<eissn>],
+        "publisher" : "<publisher>"
+    },
+    
+    "reader_rights" : {
+        "score" : <integer score>,
+        "url" : "<url>",
+        "text" : "<relevant text>"
+    },
+    "reuse_rights" : {
+        "score" : <integer score>,
+        "url" : "<url>",
+        "text" : "<relevant text>"
+    },
+    "copyrights" : {
+        "score" : <integer score>,
+        "url" : "<url>",
+        "text" : "<relevant text>"
+    },
+    "author_posting_rights" : {
+        "score" : <integer score>,
+        "url" : "<url>",
+        "text" : "<relevant text>"
+    },
+    "automatic_posting_rights" : {
+        "score" : <integer score>,
+        "url" : "<url>",
+        "text" : "<relevant text>"
+    },
+    "machine_readability" : {
+        "score" : <integer score>,
+        "url" : "<url>",
+        "text" : "<relevant text>"
+    },
+    
+    "apc" : "<apc price (as plain text)>",
+    "funder_policy_url" : "<funder policy url>",
+    "romeo_url" : "<sherpa romeo url>",
+    
+    "total" : <total score as integer>
+    
+    "admin" : {
+        "publisher_contact_date" : "<publisher contact date>",
+        "score_locked_date" : "<score locked date>",
+        "last_upload_date" : "<when this record was last uploaded by csv>",
+        "last_uploaded_by" : "<user who last uploaded this record>"
+    }
+}
+```
