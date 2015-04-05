@@ -47,4 +47,3 @@ class TestModels(testindex.ESTestCase):
         }
         score = models.Score()
         dataobj.test_dataobj(score, fields_and_values)
-    
