@@ -1,0 +1,88 @@
+#navigation {
+    background-color: #0080c0;
+}
+
+.navbar-nav > li > a:hover {
+    color: #f78f20 !important;
+    border-bottom: 5px solid #f78f20 !important;
+}
+
+.score-result {
+    border-bottom: 1px solid #c7d9e2;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.score-above-0 {
+    color: #d20700;
+}
+
+.score-above-10 {
+    color: #d20700;
+}
+
+.score-above-20 {
+    color: #d20700;
+}
+
+.score-above-30 {
+    color: #d20700;
+}
+
+.score-above-40 {
+    color: #d20700;
+}
+
+.score-above-50 {
+    color: #e9e103;
+}
+
+.score-above-60 {
+    color: #e9e103;
+}
+
+.score-above-70 {
+    color: #e9e103;
+}
+
+.score-above-80 {
+    color: #e9e103;
+}
+
+.score-above-90 {
+    color: #06e000;
+}
+
+.score-above-100 {
+    color: #06e000;
+}
+
+.score-above-110 {
+    color: #06e000;
+}
+
+.score-above-120 {
+    color: #06e000;
+}
+
+.facetview_filters {
+    border-left: 3px solid #c7d9e2;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+#facetview_selectedfilters {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 1px solid #0080c0;
+    background-color: #c7d9e2;
+}
+
+.facetview_not_found {
+    margin: 20px;
+    font-weight: bold;
+    color: #ff0700;
+}
