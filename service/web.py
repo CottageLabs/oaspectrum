@@ -43,6 +43,9 @@ app.register_blueprint(crud, url_prefix="/api")
 from octopus.modules.es.query import blueprint as query
 app.register_blueprint(query, url_prefix="/query")
 
+from octopus.modules.account.account import blueprint as account
+app.register_blueprint(account, url_prefix="/account")
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('errors/404.html'), 404
