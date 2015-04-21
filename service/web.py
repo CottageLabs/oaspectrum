@@ -1,6 +1,5 @@
 from octopus.core import app, initialise, add_configuration
 from flask.ext.login import current_user, login_required
-
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
@@ -23,13 +22,27 @@ if __name__ == "__main__":
 
     initialise()
 
-
-from flask import render_template
+# most of the imports should be done here, after initialise()
+from flask import render_template, redirect, url_for, abort
 from octopus.lib.webapp import custom_static
+from service import models
 
 @app.route("/")
 def root():
     return render_template("index.html")
+
+@app.route("/score/<identifier>")
+def score(identifier):
+    score = models.Score.pull_by_issn(identifier)
+    if score is None:
+        score = models.Score.pull(identifier)
+    if score is None:
+        abort(404)
+
+    if score.score_id != identifier:
+        return redirect(url_for("score", identifier=score.score_id))
+
+    return render_template("score.html", score=score)
 
 # this allows us to override the standard static file handling with our own dynamic version
 @app.route("/static/<path:filename>")

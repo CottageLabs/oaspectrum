@@ -70,7 +70,17 @@ jQuery(document).ready(function($) {
             },
 
             ScorePrototype : {
-
+                score_id : function() {
+                    var eissns = this.get_field("eissn");
+                    if (eissns.length > 0) {
+                        return eissns[0];
+                    }
+                    var pissns = this.get_field("issn");
+                    if (pissns.length > 0) {
+                        return pissns[0];
+                    }
+                    return this.get_field("id")
+                }
             }
         }
     });

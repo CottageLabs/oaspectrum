@@ -344,3 +344,17 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
     @last_upload_by.setter
     def last_upload_by(self, val):
         self._set_single("admin.last_upload_by", val, coerce=self._utf8_unicode(), allow_none=False)
+
+
+    ####################################################################
+    ## Non-data related properties
+
+    @property
+    def score_id(self):
+        eissns = self.eissn
+        if len(eissns) > 0:
+            return eissns[0]
+        pissns = self.issn
+        if len(pissns) > 0:
+            return pissns[0]
+        return self.id

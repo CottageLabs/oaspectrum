@@ -264,7 +264,7 @@ jQuery(document).ready(function($) {
         // right-hand container for links out
         result += "<div class='col-md-2'>";
 
-        result += '<a href="" class="btn btn-info pull-right" style="margin-top: 15px"><span class="glyphicon glyphicon-stats"></span> Full Score</a>';
+        result += '<a href="/score/' + score.score_id() + '" class="btn btn-info pull-right" style="margin-top: 15px"><span class="glyphicon glyphicon-stats"></span> Full Score</a>';
 
         // close right-hand container
         result += "</div>";
