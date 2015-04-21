@@ -1,4 +1,5 @@
 from octopus.core import app, initialise, add_configuration
+from flask.ext.login import current_user, login_required
 
 if __name__ == "__main__":
     import argparse
@@ -19,6 +20,8 @@ if __name__ == "__main__":
         import pydevd
         pydevd.settrace(app.config.get('DEBUG_SERVER_HOST', 'localhost'), port=app.config.get('DEBUG_SERVER_PORT', 51234), stdoutToServer=True, stderrToServer=True)
         print "STARTED IN REMOTE DEBUG MODE"
+
+    initialise()
 
 
 from flask import render_template
@@ -52,6 +55,5 @@ def page_not_found(e):
 
 
 if __name__ == "__main__":
-    initialise()
     app.run(host='0.0.0.0', debug=app.config['DEBUG'], port=app.config['PORT'], threaded=False)
 
