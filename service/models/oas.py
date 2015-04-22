@@ -1,5 +1,6 @@
 from service import dao
 from octopus.lib import dataobj
+import math
 
 class Score(dataobj.DataObj, dao.ScoreDAO):
     """
@@ -317,6 +318,9 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
     def publisher_contact_date(self):
         return self._get_single("admin.publisher_contact_date", coerce=self._date_str())
 
+    def format_publisher_contact_date(self, format="%e %b %Y"):
+        return self._get_single("admin.publisher_contact_date", coerce=self._date_str(out_format=format))
+
     @publisher_contact_date.setter
     def publisher_contact_date(self, val):
         self._set_single("admin.publisher_contact_date", val, coerce=self._date_str(), ignore_none=True)
@@ -333,6 +337,9 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
     def last_upload_date(self):
         return self._get_single("admin.last_upload_date", coerce=self._date_str())
 
+    def format_last_upload_date(self, format="%e %b %Y"):
+        return self._get_single("admin.last_upload_date", coerce=self._date_str(out_format=format))
+
     @last_upload_date.setter
     def last_upload_date(self, val):
         self._set_single("admin.last_upload_date", val, coerce=self._date_str(), allow_none=False)
@@ -347,7 +354,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
 
     ####################################################################
-    ## Non-data related properties
+    ## Utility properties
 
     @property
     def score_id(self):
@@ -358,3 +365,37 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
         if len(pissns) > 0:
             return pissns[0]
         return self.id
+
+    @property
+    def nearest_ten(self):
+        return (self.total / 10) * 10 # take advantage of how python treats integers
+
+    def _band(self, x):
+        if x == 0: return 1
+        return int(math.ceil(x / 4.0))
+
+    @property
+    def reader_rights_band(self):
+        return self._band(self.reader_rights_score)
+
+    @property
+    def reuse_rights_band(self):
+        return self._band(self.reuse_rights_score)
+
+    @property
+    def copyrights_band(self):
+        return self._band(self.copyrights_score)
+
+    @property
+    def author_posting_rights_band(self):
+        return self._band(self.author_posting_rights_score)
+
+    @property
+    def automatic_posting_rights_band(self):
+        return self._band(self.automatic_posting_rights_score)
+
+    @property
+    def machine_readability_band(self):
+        return self._band(self.machine_readability_score)
+
+

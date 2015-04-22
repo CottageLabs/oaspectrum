@@ -86,3 +86,92 @@
     font-weight: bold;
     color: #ff0700;
 }
+
+.score-table {
+    border: 1px solid #000000;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.score-table td {
+    padding-left: 5px;
+    padding-right: 5px;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
+.score-table thead td {
+    background-color: #0080c0;
+    color: #ffffff;
+    font-weight: bold;
+    border-right: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+}
+
+.score-table thead .access {
+    background-color: #f78f20;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.access-left {
+    border-left: 1px solid #000000 !important;
+}
+
+.access-right {
+    border-right: 1px solid #000000 !important;
+}
+
+.total-score-box {
+    text-align: center;
+}
+
+.total-score {
+    font-size: 500%;
+    font-weight: bold;
+}
+
+.apc {
+    font-weight: bold;
+}
+
+.band-1 .selected {
+    background-color: #d20700;
+}
+
+.band-2 .selected {
+    background-color: #d20700;
+}
+
+.band-3 .selected {
+    background-color: #e9e103;
+}
+
+.band-4 .selected {
+    background-color: #e9e103;
+}
+
+.band-5 .selected {
+    background-color: #06e000;
+}
+
+.score-details {
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    border-bottom: 1px solid #000000;
+}
+
+.score-details td {
+    border-top: 1px solid #000000;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.score-details thead td {
+    font-weight: bold;
+    background-color: #0080c0;
+    color: #ffffff;
+}
