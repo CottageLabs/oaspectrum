@@ -36,7 +36,7 @@ def load_account_for_login_manager(userid):
     return acc
 
 @app.route("/")
-def root():
+def index():
     return render_template("index.html")
 
 @app.route("/score/<identifier>")

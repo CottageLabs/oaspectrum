@@ -11,7 +11,7 @@
             </ul>
 
             {% if not current_user.is_anonymous() %}
-                <ul class="nav pull-right">
+                <ul class="nav navbar-nav pull-right">
                     <li{% if request.path.startswith('/account') %} class="active"{% endif %}><a alt="View your account" title="View your account" href="{{ url_for('account.username', username=current_user.email) }}"><strong>{{current_user.email}}</strong></a></li>
                     <li><a href="{{ url_for('account.logout') }}">Logout</a></li>
                 </ul>
