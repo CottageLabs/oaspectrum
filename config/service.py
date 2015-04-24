@@ -4,6 +4,9 @@ PORT = 5022
 SSL = False
 THREADED = True
 
+# Overrides for the account module
+SECRET_KEY = "oaspectrum"   # for dev, replace this in the deployment
+
 # important overrides for the ES module
 
 # elasticsearch back-end connection settings
@@ -29,3 +32,4 @@ QUERY_ROUTE = {
 }
 
 CLIENTJS_QUERY_ENDPOINT = "/query/score"
+

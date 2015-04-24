@@ -32,7 +32,7 @@ from service import models
 @login_manager.user_loader
 def load_account_for_login_manager(userid):
     from octopus.modules.account.factory import AccountFactory
-    acc = AccountFactory.get_model().pull_by_email(userid)
+    acc = AccountFactory.get_model().pull(userid)
     return acc
 
 @app.route("/")
