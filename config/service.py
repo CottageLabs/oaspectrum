@@ -4,8 +4,21 @@ PORT = 5022
 SSL = False
 THREADED = True
 
+MAIL_FROM_ADDRESS = "none@example.com"
+MAIL_SUBJECT_PREFIX = "OA Spectrum: "
+
+# override these in local.cfg
+MAIL_SERVER = None
+MAIL_PORT = None
+MAIL_USERNAME = None
+MAIL_PASSWORD = None
+
 # Overrides for the account module
 SECRET_KEY = "oaspectrum"   # for dev, replace this in the deployment
+
+ACCOUNT_RESET_EMAIL_SUBJECT = "Password reset"
+
+
 
 # important overrides for the ES module
 
