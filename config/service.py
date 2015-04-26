@@ -46,3 +46,24 @@ QUERY_ROUTE = {
 
 CLIENTJS_QUERY_ENDPOINT = "/query/score"
 
+CRUD = {
+    "score" : {
+        "model" : "service.models.ScoreCrud",
+        "create" : {
+            "enable" : False
+        },
+        "retrieve" : {
+            "enable" : True
+        },
+        "update" : {
+            "enable" : False
+        },
+        "delete" : {
+            "enable" : False
+        }
+    }
+}
+
+SEARCH_DAO = "service.dao.ScoreDAO"
+
+SEARCH_RESULT_FILTER = "service.search.filter_score"

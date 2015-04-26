@@ -3,3 +3,4 @@
 # now you can do
 # from service.models import MyObject
 from service.models.oas import Score
+from service.models.crud import ScoreCrud

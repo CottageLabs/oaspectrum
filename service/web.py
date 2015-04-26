@@ -61,8 +61,12 @@ def static(filename):
 from octopus.modules.clientjs.configjs import blueprint as configjs
 app.register_blueprint(configjs)
 
+# mount the crud and the search at the same root
 from octopus.modules.crud.api import blueprint as crud
 app.register_blueprint(crud, url_prefix="/api")
+
+from octopus.modules.es.searchapi import blueprint as searchapi
+app.register_blueprint(searchapi, url_prefix="/api")
 
 from octopus.modules.es.query import blueprint as query
 app.register_blueprint(query, url_prefix="/query")

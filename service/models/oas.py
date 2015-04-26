@@ -398,4 +398,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
     def machine_readability_band(self):
         return self._band(self.machine_readability_score)
 
+    def remove_admin_data(self):
+        self._delete("admin")
+
 
