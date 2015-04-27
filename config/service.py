@@ -17,7 +17,7 @@ MAIL_PASSWORD = None
 SECRET_KEY = "oaspectrum"   # for dev, replace this in the deployment
 
 ACCOUNT_RESET_EMAIL_SUBJECT = "Password reset"
-
+ACCOUNT_LIST_USERS = True
 
 
 # important overrides for the ES module
