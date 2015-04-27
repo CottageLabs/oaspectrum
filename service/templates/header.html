@@ -1,24 +1,42 @@
 <div class="container">
 
-    <div class="content" id="navigation">
+    <div class="content" id="topstrap">
+        <a href="/">How Open Is It: Open Access Spectrum</a>
+    </div>
 
-        <div class="navbar-nav" id="main-nav">
-            <a class="navbar-brand" href="/">How Open Is It: Open Access Spectrum</a>
-            <ul class="nav navbar-nav" id="main-nav-admin-menu" style="margin-bottom: 10px">
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/sponsors">Sponsors/Supporters</a></li>
-                <li><a href="/resources">Related Resources</a></li>
-            </ul>
+    <nav class="navbar navbar-default" id="oas-nav">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
-            {% if not current_user.is_anonymous() %}
-                <ul class="nav navbar-nav pull-right">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="main-navigation">
+                <ul class="nav navbar-nav">
+                    <li{% if request.path == "/" %} class="active"{% endif %}><a href="{{url_for('index')}}">Scores</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="#">Sponsors/Supporters</a></li>
+                    <li><a href="/resources">Related Resources</a></li>
+                <li><a href="/api">API</a></li>
+                </ul>
+
+                {% if not current_user.is_anonymous() %}
+                <ul class="nav navbar-nav navbar-right">
                     <li{% if request.path.startswith('/account') %} class="active"{% endif %}><a alt="View your account" title="View your account" href="{{ url_for('account.username', username=current_user.email) }}"><strong>{{current_user.email}}</strong></a></li>
+                    <li><a href="{{ url_for('account.index') }}">Users</a></li>
+                    <li><a href="{{ url_for('admin.index') }}">Admin</a></li>
                     <li><a href="{{ url_for('account.logout') }}">Logout</a></li>
                 </ul>
-            {% endif %}
-        </div>
-        
-    </div>
+                {% endif %}
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 
     <div class="content">
         <div class="row">

@@ -10,5 +10,5 @@ blueprint = Blueprint('admin', __name__)
 @blueprint.route("/")
 @ssl_required
 @login_required
-def admin():
+def index():
     return render_template("admin/admin.html")

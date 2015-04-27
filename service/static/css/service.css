@@ -1,10 +1,38 @@
-#navigation {
-    background-color: #0080c0;
+#topstrap {
+    color: #f78f20;
+    font-weight: bold;
+    font-size: 300%;
 }
 
-.navbar-nav > li > a:hover {
-    color: #f78f20 !important;
-    border-bottom: 5px solid #f78f20 !important;
+#topstrap a {
+    color: #f78f20;
+}
+
+#topstrap a:hover {
+    text-decoration: none;
+}
+
+#oas-nav {
+    background-color: #0080c0;
+    min-height: 0px !important;
+}
+
+#oas-nav a {
+    color: #ffffff;
+    padding-bottom: 5px;
+}
+
+#oas-nav a:hover {
+    color: #f78f20;
+    border-bottom: 5px solid #f78f20;
+    padding-bottom: 0px;
+}
+
+#oas-nav .active a {
+    background-color: #0080c0 !important;
+    border-bottom: 5px solid #cccccc;
+    padding-bottom: 0px;
+    font-weight: bold;
 }
 
 .score-result {
