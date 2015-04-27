@@ -1,5 +1,4 @@
-from octopus.core import app, initialise, add_configuration, login_manager
-# from flask.ext.login import current_user, login_required
+from octopus.core import app, initialise, add_configuration
 
 if __name__ == "__main__":
     import argparse
@@ -27,13 +26,6 @@ if __name__ == "__main__":
 from flask import render_template, redirect, url_for, abort
 from octopus.lib.webapp import custom_static
 from service import models
-# from flask.ext.login import current_user, login_required
-
-@login_manager.user_loader
-def load_account_for_login_manager(userid):
-    from octopus.modules.account.factory import AccountFactory
-    acc = AccountFactory.get_model().pull(userid)
-    return acc
 
 @app.route("/")
 def index():
@@ -71,6 +63,7 @@ app.register_blueprint(searchapi, url_prefix="/api")
 from octopus.modules.es.query import blueprint as query
 app.register_blueprint(query, url_prefix="/query")
 
+# adding account management, which enables the login functionality
 from octopus.modules.account.account import blueprint as account
 app.register_blueprint(account, url_prefix="/account")
 
