@@ -3,7 +3,32 @@
 {% block content %}
 
 
-<h1>Admin Page Here</h1>
+<h1>Upload a Score Sheet</h1>
+
+<p>Use the form below to upload a CSV with scores to be added/updated/removed.<p>
+
+<div style="margin-top: 50px; margin-bottom: 50px">
+<form action="{{url_for('admin.index')}}" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 form-inline">
+            <div class="form-group">
+                <label for="csv">Choose a CSV to upload</label>
+                <input type="file" name="csv" id="csv" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Upload <i class="glyphicon glyphicon-upload"></i></button>
+        </div>
+    </div>
+
+</form>
+</div>
+
+<p>CSVs must conform to the standard structure, or they will not import.
+    Download the <a href="{{ url_for('static', filename='template.csv') }}">template here</a>.</p>
+
+
+<p>The template shows the headers that must be used in the first row, some example content in the second row, and formatting notes in the third.</p>
+
+<p>To use the template sheet, remove all rows except the header row, and then fill in the content as required.</p>
 
 {% endblock %}
 

@@ -28,9 +28,9 @@
 
                 {% if not current_user.is_anonymous() %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li{% if request.path.startswith('/account') %} class="active"{% endif %}><a alt="View your account" title="View your account" href="{{ url_for('account.username', username=current_user.email) }}"><strong>{{current_user.email}}</strong></a></li>
-                    <li><a href="{{ url_for('account.index') }}">Users</a></li>
-                    <li><a href="{{ url_for('admin.index') }}">Admin</a></li>
+                    <li{% if request.path.endswith(current_user.email) %} class="active"{% endif %}><a alt="Manage your account" title="Manage your account" href="{{ url_for('account.username', username=current_user.email) }}"><strong>{{current_user.email}}</strong></a></li>
+                    <li{% if request.path == url_for('account.index') %} class="active"{% endif %}><a href="{{ url_for('account.index') }}">Users</a></li>
+                    <li{% if request.path == url_for('admin.index') %} class="active"{% endif %}><a href="{{ url_for('admin.index') }}">Admin</a></li>
                     <li><a href="{{ url_for('account.logout') }}">Logout</a></li>
                 </ul>
                 {% endif %}
