@@ -141,6 +141,19 @@ jQuery(document).ready(function($) {
         searchopts += '' +
             '</div>';  // closes the left hand part of the search options
 
+        // select box for fields to search on
+        var field_select = "";
+        if ( options.searchbox_fieldselect.length > 0 ) {
+            field_select += '<select class="facetview_searchfield form-control input-sm" style="width: 120px">';
+            field_select += '<option value="">search all</option>';
+
+            for (var each = 0; each < options.searchbox_fieldselect.length; each++) {
+                var obj = options.searchbox_fieldselect[each];
+                field_select += '<option value="' + obj['field'] + '">' + obj['display'] + '</option>';
+            }
+            field_select += '</select>';
+        }
+
         searchopts += '' +
             '<div class="col-md-7"> \
                 <form class="form-inline pull-right"> \
@@ -150,8 +163,8 @@ jQuery(document).ready(function($) {
                                 <button class="btn btn-danger facetview_startagain btn-sm" title="Clear all search parameters and start again"> \
                                     <span class="glyphicon glyphicon-remove"></span> \
                                 </button> \
-                            </span> \
-                            <input type="text" class="facetview_freetext form-control input-sm" name="q" value="" placeholder="Search" /> \
+                            </span> ' + field_select + '\
+                            <input type="text" class="facetview_freetext form-control input-sm" name="q" value="" placeholder="Search" style="width: 200px" /> \
                             <span class="input-group-btn"> \
                                 <button class="btn btn-info facetview_force_search btn-sm"> \
                                     <span class="glyphicon glyphicon-white glyphicon-search"></span> \
@@ -468,15 +481,29 @@ jQuery(document).ready(function($) {
     var facets = [];
     // facets.push({'field': 'journal.publisher.exact', 'display': 'Publisher'});
     facets.push({
+        field: "total",
+        display: "Total Score",
+        type: "range",
+        open: true,
+        hide_inactive: true,
+        range : [
+            {"from" : 23, "display" : "Trying"},
+            {"from" : 47, "display" : "Good"},
+            {"from" : 70, "display" : "Very Good"},
+            {"from" : 100, "display" : "Amazing"}
+        ]
+    });
+    facets.push({
         field: "reader_rights.score",
         display: "Reader Rights Score",
         type: "range",
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 5, "display" : "More than 5"},
-            {"from" : 10, "display" : "More than 10"},
-            {"from" : 15, "display" : "More than 15"}
+            {"from" : 5, "display" : "Trying"},
+            {"from" : 12, "display" : "Good"},
+            {"from" : 16, "display" : "Very Good"},
+            {"from" : 20, "display" : "Amazing"}
         ]
     });
     facets.push({
@@ -486,9 +513,10 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 5, "display" : "More than 5"},
-            {"from" : 10, "display" : "More than 10"},
-            {"from" : 15, "display" : "More than 15"}
+            {"from" : 4, "display" : "Trying"},
+            {"from" : 7, "display" : "Good"},
+            {"from" : 14, "display" : "Very Good"},
+            {"from" : 20, "display" : "Amazing"}
         ]
     });
     facets.push({
@@ -498,9 +526,10 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 5, "display" : "More than 5"},
-            {"from" : 10, "display" : "More than 10"},
-            {"from" : 15, "display" : "More than 15"}
+            // {"from" : 4, "display" : "Trying"},
+            {"from" : 4, "display" : "Good"},
+            {"from" : 10, "display" : "Very Good"},
+            {"from" : 16, "display" : "Amazing"}
         ]
     });
     facets.push({
@@ -510,9 +539,10 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 5, "display" : "More than 5"},
-            {"from" : 10, "display" : "More than 10"},
-            {"from" : 15, "display" : "More than 15"}
+            {"from" : 4, "display" : "Trying"},
+            {"from" : 6, "display" : "Good"},
+            {"from" : 10, "display" : "Very Good"},
+            {"from" : 16, "display" : "Amazing"}
         ]
     });
     facets.push({
@@ -522,9 +552,10 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 5, "display" : "More than 5"},
-            {"from" : 10, "display" : "More than 10"},
-            {"from" : 15, "display" : "More than 15"}
+            {"from" : 2, "display" : "Trying"},
+            {"from" : 4, "display" : "Good"},
+            {"from" : 8, "display" : "Very Good"},
+            {"from" : 12, "display" : "Amazing"}
         ]
     });
     facets.push({
@@ -534,9 +565,10 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 5, "display" : "More than 5"},
-            {"from" : 10, "display" : "More than 10"},
-            {"from" : 15, "display" : "More than 15"}
+            {"from" : 4, "display" : "Trying"},
+            {"from" : 8, "display" : "Good"},
+            {"from" : 12, "display" : "Very Good"},
+            {"from" : 16, "display" : "Amazing"}
         ]
     });
 
@@ -563,11 +595,18 @@ jQuery(document).ready(function($) {
         page_size : 10,
         facets : facets,
         search_sortby : [
+            {"display" : "Total Score", "field" : "total"},
             {'display':'Journal Name','field':'journal.name.exact'},
             {'display':'Publisher','field':'journal.publisher.exact'},
-            {"display" : "Total Score", "field" : "total"}
+            {"display" : "Reader Rights Score", "field" : "reader_rights.score"},
+            {"display" : "Reuse Rights Score", "field" : "reader_rights.score"},
+            {"display" : "Copyrights Score", "field" : "reader_rights.score"},
+            {"display" : "Author Posting Rights Score", "field" : "reader_rights.score"},
+            {"display" : "Automatic Posting Rights Score", "field" : "reader_rights.score"},
+            {"display" : "Machine Readability Score", "field" : "reader_rights.score"}
         ],
         searchbox_fieldselect : [
+            {'display':'Publisher','field':'journal.publisher'},
             {'display':'Journal Name','field':'journal.name'},
             {"display" : "ISSN", "field" : "ISSN"}
         ],
