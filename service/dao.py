@@ -6,10 +6,13 @@ class ScoreDAO(dao.ESDAO):
 
     @classmethod
     def pull_by_issn(cls, issn):
-        q = ISSNQuery(issn)
+        if not isinstance(issn, list):
+            issns = [issn]
+        q = ISSNSQuery(issn)
         obs = cls.object_query(q.query())
         if len(obs) > 0:
             return obs[0]
+        return None
 
     @classmethod
     def delete_by_issns(cls, issns):
@@ -34,6 +37,7 @@ class ISSNSQuery(object):
             }
         }
 
+"""
 class ISSNQuery(object):
     def __init__(self, issn):
         self.issn = issn
@@ -49,3 +53,4 @@ class ISSNQuery(object):
                 }
             }
         }
+"""

@@ -1,6 +1,8 @@
 from octopus.lib import dataobj
 from service import sheets, models
 import re
+from datetime import datetime
+from flask.ext.login import current_user
 
 ISSN_RX = "^[0-9]{4}-[0-9]{3}[X0-9]$"
 
@@ -47,14 +49,15 @@ def import_csv(path):
         if o.get("eissn") is not None and not re.match(ISSN_RX, o.get("eissn")):
             raise ImportException("E-ISSN {x} is malformed; should be of the form NNNN-NNNN".format(x=o.get("eissn")))
 
+        issns = []
+        if o.get("issn") is not None:
+            issns.append(o.get("issn"))
+        if o.get("eissn") is not None:
+            issns.append(o.get("eissn"))
+
         # at this point we can determine if this is a delete, which is signified by all elements other than
         # the issn(s) being empty
         if _is_delete(o):
-            issns = []
-            if o.get("issn") is not None:
-                issns.append(o.get("issn"))
-            if o.get("eissn") is not None:
-                issns.append(o.get("eissn"))
             deletes.append(issns)
             continue
 
@@ -77,11 +80,31 @@ def import_csv(path):
         _score_check(reference_issn, o, "machine_readability_score", "Machine Readability Score")
 
         # if we get to here, we are good to import the object by creating the model and then saving it
+
+        # first we want to see if this is one we already have
+        existing = models.Score.pull_by_issn(issns)
+
+        # to ensure we don't accidentally carry over unwanted data, we'll make a new one from scratch
         score = models.Score()
+
+        # now, populate it with the new data
         try:
             score.populate(o)
         except dataobj.DataSchemaException as e:
             raise ImportException(reference_issn + ": " + e.message)
+
+        # now carry over any relevant old data
+        if existing is not None:
+            score.id = existing.id
+            score.created_date = existing.created_date
+
+        # now add the provenance metadata
+        score.last_upload_date = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        if not current_user.is_anonymous():
+            score.last_upload_by = current_user.email
+        else:
+            score.last_upload_by = "anonymous"
+
         scores.append(score)
 
     # delete any issns that are scheduled for deletion
