@@ -19,33 +19,33 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
         "reader_rights" : {
             "score" : <integer score *>,
-            "url" : "<url *>",
-            "text" : "<relevant text *>"
+            "url" : "<url>",
+            "text" : "<relevant text>"
         },
         "reuse_rights" : {
             "score" : <integer score *>,
-            "url" : "<url *>",
-            "text" : "<relevant text *>"
+            "url" : "<url>",
+            "text" : "<relevant text>"
         },
         "copyrights" : {
             "score" : <integer score *>,
-            "url" : "<url *>",
-            "text" : "<relevant text *>"
+            "url" : "<url>",
+            "text" : "<relevant text>"
         },
         "author_posting_rights" : {
             "score" : <integer score *>,
-            "url" : "<url *>",
-            "text" : "<relevant text *>"
+            "url" : "<url>",
+            "text" : "<relevant text>"
         },
         "automatic_posting_rights" : {
             "score" : <integer score *>,
-            "url" : "<url *>",
-            "text" : "<relevant text *>"
+            "url" : "<url>",
+            "text" : "<relevant text>"
         },
         "machine_readability" : {
             "score" : <integer score *>,
-            "url" : "<url *>",
-            "text" : "<relevant text *>"
+            "url" : "<url>",
+            "text" : "<relevant text>"
         },
 
         "apc" : "<apc price (as plain text)>",
@@ -124,7 +124,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @reader_rights_url.setter
     def reader_rights_url(self, val):
-        self._set_single("reader_rights.url", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("reader_rights.url", val, coerce=self._utf8_unicode(), ignore_none=True)
 
     @property
     def reader_rights_relevant_text(self):
@@ -132,7 +132,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @reader_rights_relevant_text.setter
     def reader_rights_relevant_text(self, val):
-        self._set_single("reader_rights.text", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("reader_rights.text", val, coerce=self._utf8_unicode(), ignore_none=True)
 
 
     #######################################################
@@ -152,7 +152,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @reuse_rights_url.setter
     def reuse_rights_url(self, val):
-        self._set_single("reuse_rights.url", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("reuse_rights.url", val, coerce=self._utf8_unicode(), ignore_none=True)
 
     @property
     def reuse_rights_relevant_text(self):
@@ -160,7 +160,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @reuse_rights_relevant_text.setter
     def reuse_rights_relevant_text(self, val):
-        self._set_single("reuse_rights.text", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("reuse_rights.text", val, coerce=self._utf8_unicode(), ignore_none=True)
 
 
     #######################################################
@@ -180,7 +180,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @copyrights_url.setter
     def copyrights_url(self, val):
-        self._set_single("copyrights.url", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("copyrights.url", val, coerce=self._utf8_unicode(), ignore_none=True)
 
     @property
     def copyrights_relevant_text(self):
@@ -188,7 +188,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @copyrights_relevant_text.setter
     def copyrights_relevant_text(self, val):
-        self._set_single("copyrights.text", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("copyrights.text", val, coerce=self._utf8_unicode(), ignore_none=True)
 
 
     #######################################################
@@ -208,7 +208,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @author_posting_rights_url.setter
     def author_posting_rights_url(self, val):
-        self._set_single("author_posting_rights.url", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("author_posting_rights.url", val, coerce=self._utf8_unicode(), ignore_none=True)
 
     @property
     def author_posting_rights_relevant_text(self):
@@ -216,7 +216,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @author_posting_rights_relevant_text.setter
     def author_posting_rights_relevant_text(self, val):
-        self._set_single("author_posting_rights.text", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("author_posting_rights.text", val, coerce=self._utf8_unicode(), ignore_none=True)
 
 
     #######################################################
@@ -236,7 +236,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @automatic_posting_rights_url.setter
     def automatic_posting_rights_url(self, val):
-        self._set_single("automatic_posting_rights.url", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("automatic_posting_rights.url", val, coerce=self._utf8_unicode(), ignore_none=True)
 
     @property
     def automatic_posting_rights_relevant_text(self):
@@ -244,7 +244,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @automatic_posting_rights_relevant_text.setter
     def automatic_posting_rights_relevant_text(self, val):
-        self._set_single("automatic_posting_rights.text", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("automatic_posting_rights.text", val, coerce=self._utf8_unicode(), ignore_none=True)
 
 
     #######################################################
@@ -264,7 +264,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @machine_readability_url.setter
     def machine_readability_url(self, val):
-        self._set_single("machine_readability.url", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("machine_readability.url", val, coerce=self._utf8_unicode(), ignore_none=True)
 
     @property
     def machine_readability_relevant_text(self):
@@ -272,7 +272,7 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
 
     @machine_readability_relevant_text.setter
     def machine_readability_relevant_text(self, val):
-        self._set_single("machine_readability.text", val, coerce=self._utf8_unicode(), allow_none=False)
+        self._set_single("machine_readability.text", val, coerce=self._utf8_unicode(), ignore_none=True)
 
 
     #######################################################

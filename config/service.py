@@ -1,3 +1,5 @@
+import os
+
 # overrides for the webapp deployment
 DEBUG = True
 PORT = 5022
@@ -67,3 +69,5 @@ CRUD = {
 SEARCH_DAO = "service.dao.ScoreDAO"
 
 SEARCH_RESULT_FILTER = "service.search.filter_score"
+
+UPLOAD_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "upload")
