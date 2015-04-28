@@ -7,7 +7,7 @@ class ScoreDAO(dao.ESDAO):
     @classmethod
     def pull_by_issn(cls, issn):
         if not isinstance(issn, list):
-            issns = [issn]
+            issn = [issn]
         q = ISSNSQuery(issn)
         obs = cls.object_query(q.query())
         if len(obs) > 0:

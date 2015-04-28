@@ -53,12 +53,12 @@
     <thead>
         <tr>
             <td class="access access-left">ACCESS</td>
-            <td>READER RIGHTS</td>
-            <td>REUSE RIGHTS</td>
-            <td>COPYRIGHTS</td>
-            <td>AUTHOR POSTING RIGHTS</td>
-            <td>AUTOMATIC POSTING</td>
-            <td>MACHINE READABILITY</td>
+            <td style="width: 14%">READER RIGHTS</td>
+            <td style="width: 14%">REUSE RIGHTS</td>
+            <td style="width: 14%">COPYRIGHTS</td>
+            <td style="width: 14%">AUTHOR POSTING RIGHTS</td>
+            <td style="width: 14%">AUTOMATIC POSTING</td>
+            <td style="width: 14%">MACHINE READABILITY</td>
             <td class="access access-right">ACCESS</td>
         </tr>
     </thead>
@@ -66,110 +66,110 @@
         <tr class="band-5">
             <td><img src="{{url_for('static', filename='images/openaccess.png')}}"></td>
             <td{% if score.reader_rights_band == 5 %} class="selected"{% endif %}>
-                5
+                Free readership rights to all articles immediately upon publication
             </td>
             <td{% if score.reuse_rights_band == 5 %} class="selected"{% endif %}>
-                5
+                Generous reuse & remixing rights (e.g., CC BY license)
             </td>
             <td{% if score.copyrights_band == 5 %} class="selected"{% endif %}>
-                5
+                Author holds copyright with no restrictions
             </td>
             <td{% if score.author_posting_rights_band == 5 %} class="selected"{% endif %}>
-                5
+                Author may post any version to any repository or website with no delay
             </td>
             <td{% if score.automatic_posting_rights_band == 5 %} class="selected"{% endif %}>
-                5
+                Journals make copies of all articles automatically available in trusted third-party repositories (e.g.,PubMed Central, OpenAire, institutional) immediately upon publication
             </td>
             <td{% if score.machine_readability_band == 5 %} class="selected"{% endif %}>
-                5
+                Article full text, metadata, supporting data (including format and semantic markup) & citations may be accessed via API, with instructions publicly posted
             </td>
             <td><img src="{{url_for('static', filename='images/openaccess.png')}}"></td>
         </tr>
         <tr class="band-4">
             <td>&nbsp;</td>
             <td{% if score.reader_rights_band == 4 %} class="selected"{% endif %}>
-                4
+                Free readership rights to all articles after an embargo of no more than 6 months
             </td>
             <td{% if score.reuse_rights_band == 4 %} class="selected"{% endif %}>
-                4
+                Reuse, remixing, & further building upon the work subject to certain restrictions & conditions (e.g., CC BY-NC & CC BY-SA licenses)
             </td>
             <td{% if score.copyrights_band == 4 %} class="selected"{% endif %}>
-                4
+                Author retains/publisher grants broad rights, including author reuse (e.g., of figures in presentations/teaching, creation of derivatives) and authorization rights (for others to use)
             </td>
             <td{% if score.author_posting_rights_band == 4 %} class="selected"{% endif %}>
-                4
+                Author may post some version (determined by publisher) to any repository or website with no delay
             </td>
             <td{% if score.automatic_posting_rights_band == 4 %} class="selected"{% endif %}>
-                4
+                Journals make copies of all articles automatically available in trusted third-party repositories (e.g., PubMed Central, OpenAire, institutional) within 6 months
             </td>
             <td{% if score.machine_readability_band == 4 %} class="selected"{% endif %}>
-                4
+                Article full text, metadata, & citations may be accessed via API, with instructions publicly posted
             </td>
             <td>&nbsp;</td>
         </tr>
         <tr class="band-3">
             <td>&nbsp;</td>
             <td{% if score.reader_rights_band == 3 %} class="selected"{% endif %}>
-                3
+                Free readership rights to all articles after an embargo greater than 6 months
             </td>
             <td{% if score.reuse_rights_band == 3 %} class="selected"{% endif %}>
-                3
+                Reuse (no remixing or further building upon the work) subject to certain restrictions and conditions (e.g., CC BY-ND license)
             </td>
             <td{% if score.copyrights_band == 3 %} class="selected"{% endif %}>
-                3
+                -
             </td>
             <td{% if score.author_posting_rights_band == 3 %} class="selected"{% endif %}>
-                3
+                Author may post some version (determined by publisher) to any repository or website with some delay (determined by the publisher)
             </td>
             <td{% if score.automatic_posting_rights_band == 3 %} class="selected"{% endif %}>
-                3
+                Journals make copies of all articles automatically available in trusted third-party repositories (e.g., PubMed Central, OpenAire, institutional) within 12 months
             </td>
             <td{% if score.machine_readability_band == 3 %} class="selected"{% endif %}>
-                3
+                Article full text, metadata, & citations may be crawled without special permission or registration, with instructions publicly posted
             </td>
             <td>&nbsp;</td>
         </tr>
         <tr class="band-2">
             <td>&nbsp;</td>
             <td{% if score.reader_rights_band == 2 %} class="selected"{% endif %}>
-                2
+                Free and immediate readership rights to some, but not all, articles (including “hybrid” models)
             </td>
             <td{% if score.reuse_rights_band == 2 %} class="selected"{% endif %}>
-                2
+                Some reuse rights beyond fair use for some, but not all, articles (including “hybrid models”)
             </td>
             <td{% if score.copyrights_band == 2 %} class="selected"{% endif %}>
-                2
+                Author retains/publisher grants  limited rights for author reuse (e.g., of fi gures in presentations/teaching, creation of derivatives)
             </td>
             <td{% if score.author_posting_rights_band == 2 %} class="selected"{% endif %}>
-                2
+                Author may post some version (determined by publisher) to certain repositories or websites, with or without delays
             </td>
             <td{% if score.automatic_posting_rights_band == 2 %} class="selected"{% endif %}>
-                2
+                Journals make copies of some, but not all, articles automatically available in trusted third-party repositories (e.g., PubMed Central, OpenAire, institutional) within 12 months
             </td>
             <td{% if score.machine_readability_band == 2 %} class="selected"{% endif %}>
-                2
+                Article full text, metadata, & citations may be crawled with permission, with instructions publicly posted
             </td>
             <td>&nbsp;</td>
         </tr>
         <tr class="band-1">
             <td><img src="{{url_for('static', filename='images/closedaccess.png')}}"></td>
             <td{% if score.reader_rights_band == 1 %} class="selected"{% endif %}>
-                1
+                Subscription, membership, pay-per-view, or other fees required to read all articles
             </td>
             <td{% if score.reuse_rights_band == 1 %} class="selected"{% endif %}>
-                1
+                No reuse rights beyond fair use/dealing or other limitations or exceptions to copyright (All Rights Reserved)
             </td>
             <td{% if score.copyrights_band == 1 %} class="selected"{% endif %}>
-                1
+                Publisher holds copyright, with no author reuse beyond fair use
             </td>
             <td{% if score.author_posting_rights_band == 1 %} class="selected"{% endif %}>
-                1
+                Author may not deposit any versions to any repositories or websites at any time
             </td>
             <td{% if score.automatic_posting_rights_band == 1 %} class="selected"{% endif %}>
-                1
+                No automatic posting in third-party repositories
             </td>
             <td{% if score.machine_readability_band == 1 %} class="selected"{% endif %}>
-                1
+                No full text articles available for crawling
             </td>
             <td><img src="{{url_for('static', filename='images/closedaccess.png')}}"></td>
         </tr>
@@ -181,61 +181,97 @@
 <table class="score-details">
     <thead>
         <tr>
-            <td>Area</td>
+            <td style="width: 20%">Area</td>
             <td>Score</td>
-            <td>URL</td>
             <td>Relevant Text</td>
+            <td>&nbsp;</td>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><strong>Reader Rights</strong></td>
             <td>{{score.reader_rights_score}}</td>
-            <td><a href="{{score.reader_rights_url}}">URL</a></td>
             <td>{{score.reader_rights_relevant_text}}</td>
+            <td>
+                {% if score.reader_rights_url %}
+                    <a href="{{score.reader_rights_url}}">link</a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <td><strong>Reuse Rights</strong></td>
             <td>{{score.reuse_rights_score}}</td>
-            <td><a href="{{score.reuse_rights_url}}">URL</a></td>
             <td>{{score.reuse_rights_relevant_text}}</td>
+            <td>
+                {% if score.reuse_rights_url %}
+                    <a href="{{score.reuse_rights_url}}">link</a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <td><strong>Copyights</strong></td>
             <td>{{score.copyrights_score}}</td>
-            <td><a href="{{score.copyrights_url}}">URL</a></td>
             <td>{{score.copyrights_relevant_text}}</td>
+            <td>
+                {% if score.copyrights_url %}
+                    <a href="{{score.copyrights_url}}">link</a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <td><strong>Author Posting Rights</strong></td>
             <td>{{score.author_posting_rights_score}}</td>
-            <td><a href="{{score.author_posting_rights_url}}">URL</a></td>
             <td>{{score.author_posting_rights_relevant_text}}</td>
+            <td>
+                {% if score.author_posting_rights_url %}
+                    <a href="{{score.author_posting_rights_url}}">link</a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <td><strong>Automatic Posting</strong></td>
             <td>{{score.automatic_posting_rights_score}}</td>
-            <td><a href="{{score.automatic_posting_rights_url}}">URL</a></td>
             <td>{{score.automatic_posting_rights_relevant_text}}</td>
+            <td>
+                {% if score.automatic_posting_rights_url %}
+                    <a href="{{score.automatic_posting_rights_url}}">link</a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <td><strong>Machine Readability</strong></td>
             <td>{{score.machine_readability_score}}</td>
-            <td><a href="{{score.machine_readability_url}}">URL</a></td>
             <td>{{score.machine_readability_relevant_text}}</td>
+            <td>
+                {% if score.machine_readability_url %}
+                    <a href="{{score.machine_readability_url}}">link</a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
         </tr>
     </tbody>
 </table>
 
 <div class="row">
     <div class="col-md-12">
-        <div class="pull-right">
+        <div style="text-align: right">
             {% if score.publisher_contact_date %}
-            <em>Publisher last contacted about score {{score.format_publisher_contact_date()}}</em><br>
+            <em>Score verified as of {{score.format_publisher_contact_date()}}</em><br>
             {% endif %}
 
             {% if score.last_upload_date %}
-            <em>Score last updated {{score.format_last_upload_date()}}</em>
+            <em>Score last uploaded {{score.format_last_upload_date()}}</em>
             {% endif %}
         </div>
     </div>

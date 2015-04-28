@@ -116,10 +116,13 @@
 }
 
 .score-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 5px;
     padding-right: 5px;
     border-right: 1px solid #000000;
     border-left: 1px solid #000000;
+    font-size: 80%;
 }
 
 .score-table thead td {
@@ -158,23 +161,23 @@
 }
 
 .band-1 .selected {
-    background-color: #d20700;
+    background-color: #FFFCAA;
 }
 
 .band-2 .selected {
-    background-color: #d20700;
+    background-color: #FFFCAA;
 }
 
 .band-3 .selected {
-    background-color: #e9e103;
+    background-color: #FFFCAA;
 }
 
 .band-4 .selected {
-    background-color: #e9e103;
+    background-color: #FFFCAA;
 }
 
 .band-5 .selected {
-    background-color: #06e000;
+    background-color: #FFFCAA;
 }
 
 .score-details {
@@ -184,10 +187,15 @@
     border-bottom: 1px solid #000000;
 }
 
+.score-details tr:hover {
+    background-color: #dddddd;
+}
+
 .score-details td {
     border-top: 1px solid #000000;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: top;
 }
 
 .score-details thead td {

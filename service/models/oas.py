@@ -370,33 +370,46 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
     def nearest_ten(self):
         return (self.total / 10) * 10 # take advantage of how python treats integers
 
-    def _band(self, x):
-        if x == 0: return 1
-        return int(math.ceil(x / 4.0))
+    def _band(self, score, bands):
+        band = 1
+        boundaries = bands.keys()
+        boundaries.sort()
+        for b in boundaries:
+            if score >= b:
+                band = bands[b]
+            else:
+                break
+        return band
 
     @property
     def reader_rights_band(self):
-        return self._band(self.reader_rights_score)
+        bands = {0 : 1, 5 : 2, 12 : 3, 16 : 4, 20 : 5}
+        return self._band(self.reader_rights_score, bands)
 
     @property
     def reuse_rights_band(self):
-        return self._band(self.reuse_rights_score)
+        bands = {0 : 1, 4 : 2, 7 : 3, 14 : 4, 20 : 5}
+        return self._band(self.reuse_rights_score, bands)
 
     @property
     def copyrights_band(self):
-        return self._band(self.copyrights_score)
+        bands = {0 : 1, 4 : 2, 10 : 4, 16 : 5}  # Note that there is no middle band here
+        return self._band(self.copyrights_score, bands)
 
     @property
     def author_posting_rights_band(self):
-        return self._band(self.author_posting_rights_score)
+        bands = {0 : 1, 4 : 2, 6 : 3, 10 : 4, 16 : 5}
+        return self._band(self.author_posting_rights_score, bands)
 
     @property
     def automatic_posting_rights_band(self):
-        return self._band(self.automatic_posting_rights_score)
+        bands = {0 : 1, 2 : 2, 4 : 3, 8 : 4, 12 : 5}
+        return self._band(self.automatic_posting_rights_score, bands)
 
     @property
     def machine_readability_band(self):
-        return self._band(self.machine_readability_score)
+        bands = {0 : 1, 4 : 2, 8 : 3, 12 : 4, 16 : 5}
+        return self._band(self.machine_readability_score, bands)
 
     def remove_admin_data(self):
         self._delete("admin")
