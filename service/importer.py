@@ -14,11 +14,20 @@ def import_csv(path):
             raise ImportException("{n} for ISSN {x} is malformed: {y}".format(n=name, x=reference_issn, y=o.get(field)))
 
     def _score_check(reference_issn, o, field, name):
+        if o.get(field) is None:
+            raise ImportException("{n} for ISSN {x} is not set".format(n=name, x=reference_issn))
         coerce = dataobj.DataObj()._int()
         try:
             coerce(o.get(field))
         except ValueError:
             raise ImportException("{n} for ISSN {x} is not an integer: {y}".format(n=name, x=reference_issn, y=o.get(field)))
+
+    def _is_delete(o):
+        for key, value in o.iteritems():
+            if key not in ["issn", "eissn"]:
+                if value is not None and value != "":
+                    return False
+        return True
 
     # load the data from a sheet
     sheet = sheets.ScoreSheet(path)
@@ -26,6 +35,7 @@ def import_csv(path):
     # attempt to parse everything to data objects, doing some validation
     # along the way
     scores = []
+    deletes = []
     for o in sheet.objects():
         # check that at least one issn exists, and that both are formatted correctly
         if o.get("issn") is None and o.get("eissn") is None:
@@ -36,6 +46,17 @@ def import_csv(path):
 
         if o.get("eissn") is not None and not re.match(ISSN_RX, o.get("eissn")):
             raise ImportException("E-ISSN {x} is malformed; should be of the form NNNN-NNNN".format(x=o.get("eissn")))
+
+        # at this point we can determine if this is a delete, which is signified by all elements other than
+        # the issn(s) being empty
+        if _is_delete(o):
+            issns = []
+            if o.get("issn") is not None:
+                issns.append(o.get("issn"))
+            if o.get("eissn") is not None:
+                issns.append(o.get("eissn"))
+            deletes.append(issns)
+            continue
 
         reference_issn = o.get("issn") if o.get("issn") is not None else o.get("eissn")
 
@@ -62,6 +83,10 @@ def import_csv(path):
         except dataobj.DataSchemaException as e:
             raise ImportException(reference_issn + ": " + e.message)
         scores.append(score)
+
+    # delete any issns that are scheduled for deletion
+    for issns in deletes:
+        models.Score.delete_by_issns(issns)
 
     # finally, once they all parse, save them
     for score in scores:

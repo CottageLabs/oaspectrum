@@ -22,14 +22,19 @@
 </form>
 </div>
 
+<h2>Template CSV</h2>
+
 <p>CSVs must conform to the standard structure, or they will not import.
     Download the <a href="{{ url_for('static', filename='template.csv') }}">template here</a>.</p>
-
 
 <p>The template shows the headers that must be used in the first row, some example content in the second row, and formatting notes in the third.</p>
 
 <p>To use the template sheet, remove all rows except the header row, and then fill in the content as required.</p>
 
+<h2>Deleting Scores</h2>
+
+<p>To delete a score, provide the ISSN and/or E-ISSN in the CSV, and leave all the other information blank.
+    The scores with matching ISSNs will be removed on successful upload.</p>
 {% endblock %}
 
 

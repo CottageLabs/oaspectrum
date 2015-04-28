@@ -11,6 +11,29 @@ class ScoreDAO(dao.ESDAO):
         if len(obs) > 0:
             return obs[0]
 
+    @classmethod
+    def delete_by_issns(cls, issns):
+        if not isinstance(issns, list):
+            issns = [issns]
+        q = ISSNSQuery(issns)
+        cls.delete_by_query(q.query())
+
+class ISSNSQuery(object):
+    def __init__(self, issns):
+        self.issns = issns
+
+    def query(self):
+        return {
+            "query" : {
+                "bool" : {
+                    "should" : [
+                        {"terms" : {"journal.issn.exact" : self.issns}},
+                        {"terms" : {"journal.eissn.exact" : self.issns}}
+                    ]
+                }
+            }
+        }
+
 class ISSNQuery(object):
     def __init__(self, issn):
         self.issn = issn
