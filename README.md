@@ -119,3 +119,59 @@ If you want to specify your own root config file, you can use
     }
 }
 ```
+
+# API
+
+## Search API
+
+To search OA Spectrum, go to:
+
+    /api/search
+
+The search API takes 3 query parameters:
+
+* q - the query string, which can be formatted as per the [Lucene Query Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).  Required.
+* page - the page number of results to return. Optional, defaults to 1.
+* pageSize - the number of results to return in a single page (max size 100). Optional, defaults to 10.
+
+For example:
+
+    GET /api/search?q=Pharmaceutica&page=2&pageSize=10
+
+This will return a JSON document of the following form:
+
+```json
+{
+    query: "Pharmaceutica",
+    page: 2,
+    pageSize: 10,
+    total: 33,
+    timestamp: "2015-0429T10:43:18Z",
+    results: [],
+}
+```
+
+The results array will contain a list, ordered by relevance to your query, of objects which conform to the data model
+described above (without the admin data).
+
+To query a specific field using the Lucene syntax, you can use the paths to the fields you want to query on from the data model.
+
+For example, to query by ISSN:
+
+    GET /api/search?q=journal.issn:1234-5678+OR+journal.eissn:1234-5678&page=2&pageSize=10
+
+You may also use the "exact" keyword to force a field to match exactly the string you are passing in, rather than the
+default tokenised matching.
+
+The same ISSN query would be:
+
+    GET /api/search?q=journal.issn.exact:1234-5678+OR+journal.eissn.exact:1234-5678&page=2&pageSize=10
+
+## Retrieve API
+
+Each document in the search results will provide you with an id, and the document represented by this ID can be
+pulled on its own from the Retrieve API:
+
+    GET /api/score/<id>
+
+This will return a JSON document for only that record, formatted as described above.
