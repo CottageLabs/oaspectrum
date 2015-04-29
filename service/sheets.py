@@ -35,3 +35,37 @@ class ScoreSheet(clcsv.SheetWrapper):
     }
 
     EMPTY_STRING_AS_NONE = True
+
+    OUTPUT_ORDER = [
+        "issn",
+        "eissn",
+        "journal_name",
+        "journal_url",
+        "reader_rights_score",
+        "reader_rights_url",
+        "reader_rights_relevant_text",
+        "reuse_rights_score",
+        "reuse_rights_url",
+        "reuse_rights_relevant_text",
+        "copyrights_score",
+        "copyrights_url",
+        "copyrights_relevant_text",
+        "author_posting_rights_score",
+        "author_posting_rights_url",
+        "author_posting_rights_relevant_text",
+        "automatic_posting_rights_score",
+        "automatic_posting_rights_url",
+        "automatic_posting_rights_relevant_text",
+        "machine_readability_score",
+        "machine_readability_url",
+        "machine_readability_relevant_text",
+        "apc_price",
+        "funder_policy_url",
+        "romeo_url",
+        "issn",
+        "eissn",
+        "total",
+        "publisher",
+        "publisher_contact_date",
+        "score_locked_date"
+    ]

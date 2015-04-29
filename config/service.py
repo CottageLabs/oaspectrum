@@ -18,6 +18,7 @@ MAIL_PASSWORD = None
 # Overrides for the account module
 SECRET_KEY = "oaspectrum"   # for dev, replace this in the deployment
 
+ACCOUNT_ENABLE = True
 ACCOUNT_RESET_EMAIL_SUBJECT = "Password reset"
 ACCOUNT_LIST_USERS = True
 
