@@ -142,12 +142,12 @@ This will return a JSON document of the following form:
 
 ```json
 {
-    query: "Pharmaceutica",
-    page: 2,
-    pageSize: 10,
-    total: 33,
-    timestamp: "2015-0429T10:43:18Z",
-    results: [],
+    "query": "Pharmaceutica",
+    "page": 2,
+    "pageSize": 10,
+    "total": 33,
+    "timestamp": "2015-0429T10:43:18Z",
+    "results": [],
 }
 ```
 

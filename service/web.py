@@ -44,6 +44,10 @@ def score(identifier):
 
     return render_template("score.html", score=score)
 
+@app.route("/api")
+def apidox():
+    return render_template("api.html")
+
 # this allows us to override the standard static file handling with our own dynamic version
 @app.route("/static/<path:filename>")
 def static(filename):
