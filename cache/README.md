@@ -1,0 +1,1 @@
+Directory for cache files, such as data exports, sitemaps, etc

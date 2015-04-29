@@ -33,7 +33,8 @@ ELASTIC_SEARCH_VERSION = "1.4.2"
 # Classes from which to retrieve ES mappings to be used in this application
 ELASTIC_SEARCH_MAPPINGS = [
     "service.dao.ScoreDAO",
-    "octopus.modules.account.dao.BasicAccountDAO"
+    "octopus.modules.account.dao.BasicAccountDAO",
+    "octopus.modules.cache.dao.CachedFileDAO"
 ]
 
 QUERY_ROUTE = {
@@ -72,3 +73,12 @@ SEARCH_DAO = "service.dao.ScoreDAO"
 SEARCH_RESULT_FILTER = "service.search.filter_score"
 
 UPLOAD_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "upload")
+
+CACHE_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "cache")
+
+CACHE_GENERATORS = {
+    "csv" : {
+        "class" : "service.exporter.CSVCache",
+        "timeout" : 1800
+    }
+}

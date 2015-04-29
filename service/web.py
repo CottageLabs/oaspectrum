@@ -23,9 +23,10 @@ if __name__ == "__main__":
     initialise()
 
 # most of the imports should be done here, after initialise()
-from flask import render_template, redirect, url_for, abort
+from flask import render_template, redirect, url_for, abort, send_file
 from octopus.lib.webapp import custom_static
 from service import models
+from octopus.modules.cache import cache
 
 @app.route("/")
 def index():
@@ -47,6 +48,13 @@ def score(identifier):
 @app.route("/api")
 def apidox():
     return render_template("api.html")
+
+@app.route("/csv")
+def csv():
+    cf = cache.load_file("csv")
+    if cf is None:
+        abort(404)
+    return send_file(cf.path, mimetype="text/csv", as_attachment=True, attachment_filename=cf.filename + ".csv")
 
 # this allows us to override the standard static file handling with our own dynamic version
 @app.route("/static/<path:filename>")
