@@ -38,20 +38,22 @@ ELASTIC_SEARCH_MAPPINGS = [
 ]
 
 QUERY_ROUTE = {
-    "query" : {                                 # the URL route at which it is mounted
-        "score" : {                             # the URL name for the index type being queried
-            "auth" : False,                     # whether the route requires authentication
-            "role" : None,                      # if authenticated, what role is required to access the query endpoint
-            "filters" : [],            # names of the standard filters to apply to the query
-            "dao" : "service.dao.ScoreDAO"       # classpath for DAO which accesses the underlying ES index
+    "query" : {
+        "score" : {
+            "auth" : False,
+            "role" : None,
+            "filters" : [],
+            "dao" : "service.dao.ScoreDAO"
         }
     },
     "account_query" : {
         "account" : {
-            "auth" : True,                     # whether the route requires authentication
-            "role" : "list-users",                      # if authenticated, what role is required to access the query endpoint
-            "filters" : [],            # names of the standard filters to apply to the query
-            "dao" : "octopus.modules.account.dao.BasicAccountDAO"       # classpath for DAO which accesses the underlying ES index
+            "auth" : True,
+            "role" : "list-users",
+            "filters" : [
+                "octopus.modules.account.dao.query_filter"
+            ],
+            "dao" : "octopus.modules.account.dao.BasicAccountDAO"
         }
     }
 }
