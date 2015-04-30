@@ -74,6 +74,7 @@ app.register_blueprint(searchapi, url_prefix="/api")
 
 from octopus.modules.es.query import blueprint as query
 app.register_blueprint(query, url_prefix="/query")
+app.register_blueprint(query, url_prefix="/account_query")
 
 # adding account management, which enables the login functionality
 from octopus.modules.account.account import blueprint as account

@@ -45,6 +45,14 @@ QUERY_ROUTE = {
             "filters" : [],            # names of the standard filters to apply to the query
             "dao" : "service.dao.ScoreDAO"       # classpath for DAO which accesses the underlying ES index
         }
+    },
+    "account_query" : {
+        "account" : {
+            "auth" : True,                     # whether the route requires authentication
+            "role" : "list-users",                      # if authenticated, what role is required to access the query endpoint
+            "filters" : [],            # names of the standard filters to apply to the query
+            "dao" : "octopus.modules.account.dao.BasicAccountDAO"       # classpath for DAO which accesses the underlying ES index
+        }
     }
 }
 
