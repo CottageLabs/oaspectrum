@@ -21,7 +21,7 @@ SECRET_KEY = "oaspectrum"   # for dev, replace this in the deployment
 ACCOUNT_ENABLE = True
 ACCOUNT_RESET_EMAIL_SUBJECT = "Password reset"
 ACCOUNT_LIST_USERS = True
-
+ACCOUNT_DEFAULT_ROLES = ["admin"]   # all system users are admins
 
 # important overrides for the ES module
 
