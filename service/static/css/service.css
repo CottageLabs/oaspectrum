@@ -1,7 +1,12 @@
 #topstrap {
-    color: #f78f20;
+    /* color: #f78f20; */
     font-weight: bold;
     font-size: 300%;
+    /*background-image: url("/static/images/hoii_banner.png"); */
+    /*background-repeat: no-repeat; */
+    /*height: 230px; */
+    /* background-size: 100% 100%; */
+    padding-bottom: 30px;
 }
 
 #topstrap a {
