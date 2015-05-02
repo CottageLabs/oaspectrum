@@ -9,7 +9,7 @@ class CSVCache(CacheGenerator):
 def export_csv(path):
     with codecs.open(path, "wb", "utf-8") as writer:
         out = sheets.ScoreSheet(writer=writer)
-        for score in models.Score.scroll():
+        for score in models.Score.scroll(raise_on_scroll_error=False):
             out.add_dataobj(score)
         out.save()
 
