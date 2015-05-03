@@ -3,6 +3,7 @@ from service import sheets, models
 import re
 from datetime import datetime
 from flask.ext.login import current_user
+from octopus.modules.cache import cache
 
 ISSN_RX = "^[0-9]{4}-[0-9]{3}[X0-9]$"
 
@@ -116,6 +117,15 @@ def import_csv(path):
     for issns in deletes:
         models.Score.delete_by_issns(issns)
 
-    # finally, once they all parse, save them
-    for score in scores:
-        score.save()
+    # finally, once they all parse, save them (doing a blocking save on the final one)
+    for i in range(len(scores)):
+        score = scores[i]
+        if i == len(scores) - 1:
+            score.save(blocking=True)
+        else:
+            score.save()
+
+    # now request the csv cache file to be regenerated
+    cache.trigger_regen("csv")
+
+
