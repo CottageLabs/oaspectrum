@@ -10,3 +10,4 @@ local.cfg
 .idea/
 
 cache/csv/
+upload/*.csv

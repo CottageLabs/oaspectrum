@@ -34,6 +34,11 @@ def import_csv(path):
     # load the data from a sheet
     sheet = sheets.ScoreSheet(path)
 
+    try:
+        sheet.validate()
+    except sheets.clcsv.SheetValidationException as e:
+        raise ImportException("CSV does not meet required structure; header {x} missing".format(x=e.missing_header))
+
     # attempt to parse everything to data objects, doing some validation
     # along the way
     scores = []

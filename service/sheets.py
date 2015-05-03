@@ -69,3 +69,5 @@ class ScoreSheet(clcsv.SheetWrapper):
         "publisher_contact_date",
         "score_locked_date"
     ]
+
+    REQUIRED = OUTPUT_ORDER
