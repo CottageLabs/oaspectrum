@@ -90,6 +90,16 @@
     color: #988E93;
 }
 
+.subscore {
+    font-size: 80%;
+    margin-top: 15px;
+}
+
+.subscore .subscore-number {
+    font-weight: bold;
+    font-size: 150%;
+}
+
 #publicsearch .facetview_filters {
     border-left: 3px solid #c7d9e2;
     padding-left: 10px;

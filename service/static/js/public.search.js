@@ -233,7 +233,7 @@ jQuery(document).ready(function($) {
         result += "<div class='row'>";
 
         // left-hand container for metadata
-        result += "<div class='col-md-9'>";
+        result += "<div class='col-md-6 col-sm-6'>";
 
         // journal name
         // FIXME: requires link to full score page
@@ -263,8 +263,38 @@ jQuery(document).ready(function($) {
         // close the left-hand container
         result += "</div>";
 
+        // second container for score being searched on, if one of the specific scores
+        var subscoreOn = ["reader_rights.score", "reuse_rights.score", "copyrights.score",
+            "author_posting_rights.score", "automatic_posting_rights.score", "machine_readability.score"];
+        var displayLookup = {
+            "reader_rights.score" : "Reader Rights",
+            "reuse_rights.score" : "Reuse Rights",
+            "copyrights.score" : "Copyrights",
+            "author_posting_rights.score" : "Author Posting Rights",
+            "automatic_posting_rights.score" : "Automatic Posting Rights",
+            "machine_readability.score" : "Machine Readability"
+        };
+        result += "<div class='col-md-2 col-sm-2'>";
+        if (options.sort && options.sort.length > 0) {
+            result += '<div class="subscore">';
+            for (var i = 0; i < options.sort.length; i++) {
+                var so = options.sort[i];
+                var field = Object.keys(so)[0];
+                if ($.inArray(field, subscoreOn) >= 0) {
+                    var field_name = field.split(".").join("_");
+                    var subscore = score.get_field(field_name);
+                    result += displayLookup[field] + "<br><span class='subscore-number'>" + subscore + "</span>";
+                    break;
+                }
+            }
+            result += "</div>";
+        } else {
+            result += "&nbsp;";
+        }
+        result += "</div>";
+
         // right-of-middle container for score information
-        result += "<div class='col-md-1'>";
+        result += "<div class='col-md-2 col-sm-2'>";
 
         // the total score as a big highlight number
         // round the score down to the nearest 10
@@ -275,7 +305,7 @@ jQuery(document).ready(function($) {
         result += "</div>";
 
         // right-hand container for links out
-        result += "<div class='col-md-2'>";
+        result += "<div class='col-md-2 col-sm-2'>";
 
         result += '<a href="/score/' + score.score_id() + '" class="btn btn-info pull-right" style="margin-top: 15px"><span class="glyphicon glyphicon-stats"></span> Full Score</a>';
 
@@ -599,11 +629,11 @@ jQuery(document).ready(function($) {
             {'display':'Journal Name','field':'journal.name.exact'},
             {'display':'Publisher','field':'journal.publisher.exact'},
             {"display" : "Reader Rights Score", "field" : "reader_rights.score"},
-            {"display" : "Reuse Rights Score", "field" : "reader_rights.score"},
-            {"display" : "Copyrights Score", "field" : "reader_rights.score"},
-            {"display" : "Author Posting Rights Score", "field" : "reader_rights.score"},
-            {"display" : "Automatic Posting Rights Score", "field" : "reader_rights.score"},
-            {"display" : "Machine Readability Score", "field" : "reader_rights.score"}
+            {"display" : "Reuse Rights Score", "field" : "reuse_rights.score"},
+            {"display" : "Copyrights Score", "field" : "copyrights.score"},
+            {"display" : "Author Posting Rights Score", "field" : "author_posting_rights.score"},
+            {"display" : "Automatic Posting Rights Score", "field" : "automatic_posting_rights.score"},
+            {"display" : "Machine Readability Score", "field" : "machine_readability.score"}
         ],
         searchbox_fieldselect : [
             {'display':'Publisher','field':'journal.publisher'},
