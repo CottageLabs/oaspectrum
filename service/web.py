@@ -49,6 +49,10 @@ def score(identifier):
 def apidox():
     return render_template("api.html")
 
+@app.route("/faq")
+def faq():
+    return render_template("faq.html")
+
 @app.route("/csv")
 def csv():
     cf = cache.load_file("csv")
