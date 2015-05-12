@@ -517,10 +517,9 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 23, "display" : "Trying"},
-            {"from" : 47, "display" : "Good"},
-            {"from" : 70, "display" : "Very Good"},
-            {"from" : 100, "display" : "Amazing"}
+            {"from" : 100, "display" : "Full Open"},
+            {"from" : 1, "to" : 99, "display" : "Partially Open"},
+            {"to" : 1, "display" : "Closed"}
         ]
     });
     facets.push({
@@ -530,10 +529,9 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 5, "display" : "Trying"},
-            {"from" : 12, "display" : "Good"},
-            {"from" : 16, "display" : "Very Good"},
-            {"from" : 20, "display" : "Amazing"}
+            {"from" : 20, "display" : "Full Open"},
+            {"from" : 1, "to" : 19, "display" : "Partially Open"},
+            {"to" : 1, "display" : "Closed"}
         ]
     });
     facets.push({
@@ -543,10 +541,9 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 4, "display" : "Trying"},
-            {"from" : 7, "display" : "Good"},
-            {"from" : 14, "display" : "Very Good"},
-            {"from" : 20, "display" : "Amazing"}
+            {"from" : 20, "display" : "Full Open"},
+            {"from" : 1, "to" : 19, "display" : "Partially Open"},
+            {"to" : 1, "display" : "Closed"}
         ]
     });
     facets.push({
@@ -556,10 +553,9 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            // {"from" : 4, "display" : "Trying"},
-            {"from" : 4, "display" : "Good"},
-            {"from" : 10, "display" : "Very Good"},
-            {"from" : 16, "display" : "Amazing"}
+            {"from" : 16, "display" : "Full Open"},
+            {"from" : 1, "to" : 15, "display" : "Partially Open"},
+            {"to" : 1, "display" : "Closed"}
         ]
     });
     facets.push({
@@ -569,10 +565,9 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 4, "display" : "Trying"},
-            {"from" : 6, "display" : "Good"},
-            {"from" : 10, "display" : "Very Good"},
-            {"from" : 16, "display" : "Amazing"}
+            {"from" : 16, "display" : "Full Open"},
+            {"from" : 1, "to" : 15, "display" : "Partially Open"},
+            {"to" : 1, "display" : "Closed"}
         ]
     });
     facets.push({
@@ -582,10 +577,9 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 2, "display" : "Trying"},
-            {"from" : 4, "display" : "Good"},
-            {"from" : 8, "display" : "Very Good"},
-            {"from" : 12, "display" : "Amazing"}
+            {"from" : 12, "display" : "Full Open"},
+            {"from" : 1, "to" : 11, "display" : "Partially Open"},
+            {"to" : 1, "display" : "Closed"}
         ]
     });
     facets.push({
@@ -595,10 +589,9 @@ jQuery(document).ready(function($) {
         open: true,
         hide_inactive: true,
         range : [
-            {"from" : 4, "display" : "Trying"},
-            {"from" : 8, "display" : "Good"},
-            {"from" : 12, "display" : "Very Good"},
-            {"from" : 16, "display" : "Amazing"}
+            {"from" : 16, "display" : "Full Open"},
+            {"from" : 1, "to" : 15, "display" : "Partially Open"},
+            {"to" : 1, "display" : "Closed"}
         ]
     });
 
