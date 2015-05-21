@@ -21,8 +21,8 @@
                 <ul class="nav navbar-nav">
                     <li{% if request.path == "/" %} class="active"{% endif %}><a href="{{url_for('index')}}">Scores</a></li>
                     <li{% if request.path == url_for('faq') %} class="active"{% endif %}><a href="{{url_for('faq')}}">FAQ</a></li>
-                    <li><a href="#">Sponsors/Supporters</a></li>
-                    <li><a href="/resources">Related Resources</a></li>
+                    <li{% if request.path == url_for('sponsors') %} class="active"{% endif %}><a href="{{url_for('sponsors')}}">Sponsors/Supporters</a></li>
+                    <li><a href="#">Related Resources</a></li>
                     <li{% if request.path.startswith("/api") %} class="active"{% endif %}><a href="/api">The Data</a></li>
                 </ul>
 

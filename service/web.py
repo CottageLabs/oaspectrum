@@ -53,6 +53,10 @@ def apidox():
 def faq():
     return render_template("faq.html")
 
+@app.route("/sponsors")
+def sponsors():
+    return render_template("sponsors.html")
+
 @app.route("/csv")
 def csv():
     cf = cache.load_file("csv")
