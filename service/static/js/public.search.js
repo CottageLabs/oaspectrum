@@ -72,7 +72,7 @@ jQuery(document).ready(function($) {
 
         // if we are rendering facets, put that division in
         if (showfacets) {
-            thefacetview += '<div class="col-md-3"><div id="facetview_filters"></div></div>';
+            thefacetview += '<div class="col-md-3"><div style="margin-bottom: 15px"><strong>Filter by:</strong><br><span style="font-size: 80%">(select as many as you like)</span></div><div id="facetview_filters"></div></div>';
         }
 
         // close off the outer containers
