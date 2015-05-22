@@ -2,10 +2,10 @@
     /* color: #f78f20; */
     font-weight: bold;
     font-size: 300%;
-    /*background-image: url("/static/images/hoii_banner.png"); */
-    /*background-repeat: no-repeat; */
-    /*height: 230px; */
-    /* background-size: 100% 100%; */
+    background-image: url("/static/images/header.png");
+    background-repeat: no-repeat;
+    height: 150px;
+    background-size: 100% 100%;
     padding-bottom: 30px;
 }
 
@@ -20,6 +20,8 @@
 #oas-nav {
     background-color: #0080c0;
     min-height: 0px !important;
+    border: 0px !important;
+    border-radius: 0px !important;
 }
 
 #oas-nav a {
