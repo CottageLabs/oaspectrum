@@ -6,6 +6,7 @@ src*
 build/*
 dist/*
 local.cfg
+deploy/newrelic.ini
 
 .idea/
 
