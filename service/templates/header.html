@@ -25,14 +25,17 @@
                     <li{% if request.path.startswith("/api") %} class="active"{% endif %}><a href="/api">The Data</a></li>
                 </ul>
 
-                {% if not current_user.is_anonymous() %}
                 <ul class="nav navbar-nav navbar-right">
+                {% if not current_user.is_anonymous() %}
+
                     <li{% if request.path.endswith(current_user.email) %} class="active"{% endif %}><a alt="Manage your account" title="Manage your account" href="{{ url_for('account.username', username=current_user.email) }}"><strong>{{current_user.email}}</strong></a></li>
                     <li{% if request.path == url_for('account.index') %} class="active"{% endif %}><a href="{{ url_for('account.index') }}">Users</a></li>
                     <li{% if request.path == url_for('admin.index') %} class="active"{% endif %}><a href="{{ url_for('admin.index') }}">Admin</a></li>
                     <li><a href="{{ url_for('account.logout') }}">Logout</a></li>
-                </ul>
+                {% else %}
+                    <li{% if request.path == url_for('account.login') %} class="active"{% endif %}><a href="{{ url_for('account.login') }}">Administrative Login</a></li>
                 {% endif %}
+                </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
