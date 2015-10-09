@@ -1,3 +1,7 @@
+# WARNING Automatic deployment
+
+Be careful when committing to the master branch, as this particular application is automatically deployed to production without human review! Forks are OK of course, it's just CottageLabs/oaspectrum .
+
 # Open Access Spectrum 
 
 Application which provides the management and UI for the Open Access Spectrum service
