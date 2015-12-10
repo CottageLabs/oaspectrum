@@ -268,8 +268,8 @@
             <em>Score verified as of {{score.format_publisher_contact_date()}}</em><br>
             {% endif %}
 
-            {% if score.last_upload_date %}
-            <em>Score last uploaded {{score.format_last_upload_date()}}</em>
+            {% if score.created_date %}
+            <em>Score first added to site {{score.format_created_date()}}</em>
             {% endif %}
         </div>
     </div>

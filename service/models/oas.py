@@ -64,6 +64,12 @@ class Score(dataobj.DataObj, dao.ScoreDAO):
     """
 
     ####################################################################
+    ## Base Properties
+
+    def format_created_date(self, format="%e %b %Y"):
+        return self._get_single("created_date", coerce=self._date_str(out_format=format))
+
+    ####################################################################
     ## Journal information
 
     @property
