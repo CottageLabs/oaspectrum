@@ -14,16 +14,16 @@ def import_csv(path):
 
     def _url_check(reference_issn, o, field, name):
         if o.get(field) is not None and not o.get(field).startswith("http"):
-            raise ImportException("{n} for ISSN {x} is malformed: {y}".format(n=name, x=reference_issn, y=o.get(field)))
+            raise ImportException(u"{n} for ISSN {x} is malformed: {y}".format(n=name, x=reference_issn, y=o.get(field)))
 
     def _score_check(reference_issn, o, field, name):
         if o.get(field) is None:
-            raise ImportException("{n} for ISSN {x} is not set".format(n=name, x=reference_issn))
+            raise ImportException(u"{n} for ISSN {x} is not set".format(n=name, x=reference_issn))
         coerce = dataobj.DataObj()._int()
         try:
             coerce(o.get(field))
         except ValueError:
-            raise ImportException("{n} for ISSN {x} is not an integer: {y}".format(n=name, x=reference_issn, y=o.get(field)))
+            raise ImportException(u"{n} for ISSN {x} is not an integer: {y}".format(n=name, x=reference_issn, y=o.get(field)))
 
     def _is_delete(o):
         for key, value in o.iteritems():
@@ -38,7 +38,7 @@ def import_csv(path):
     try:
         sheet.validate()
     except sheets.clcsv.SheetValidationException as e:
-        raise ImportException("CSV does not meet required structure; header {x} missing".format(x=e.missing_header))
+        raise ImportException(u"CSV does not meet required structure; header {x} missing".format(x=e.missing_header))
 
     # attempt to parse everything to data objects, doing some validation
     # along the way
@@ -47,13 +47,13 @@ def import_csv(path):
     for o in sheet.objects():
         # check that at least one issn exists, and that both are formatted correctly
         if o.get("issn") is None and o.get("eissn") is None:
-            raise ImportException("All records must have ISSNs")
+            raise ImportException(u"All records must have ISSNs")
 
         if o.get("issn") is not None and not re.match(ISSN_RX, o.get("issn")):
-            raise ImportException("ISSN {x} is malformed; should be of the form NNNN-NNNN".format(x=o.get("issn")))
+            raise ImportException(u"ISSN {x} is malformed; should be of the form NNNN-NNNN".format(x=o.get("issn")))
 
         if o.get("eissn") is not None and not re.match(ISSN_RX, o.get("eissn")):
-            raise ImportException("E-ISSN {x} is malformed; should be of the form NNNN-NNNN".format(x=o.get("eissn")))
+            raise ImportException(u"E-ISSN {x} is malformed; should be of the form NNNN-NNNN".format(x=o.get("eissn")))
 
         issns = []
         if o.get("issn") is not None:
